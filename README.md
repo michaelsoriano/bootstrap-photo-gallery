@@ -1,7 +1,7 @@
 # bootstrap-photo-gallery
 Responsive photo gallery using the grid system of Bootstrap and custom jQuery for the modal
 
-![alt tag](http://cdn.fearlessflyer.com/main/wp-content/uploads/2014/01/bootstrap-gallery-1.gif)
+![alt tag](http://cdn.fearlessflyer.com/main/wp-content/uploads/2013/11/bootstrap-gallery-animated.gif)
 
 
 Files from the tutorial:
