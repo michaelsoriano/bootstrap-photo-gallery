@@ -64,3 +64,15 @@ $(document).on('click', 'a.controls', function(){
 	
 	return false;
 });
+
+//Adding code for keyboard left and right buttons click --
+$(document).keydown(function(e){
+	if (e.keyCode == 37) { //this is left keyboard button
+		$('a.previous').trigger('click') //trigger the left button click
+	}
+
+	if (e.keyCode == 39) { //this is right keboard button
+		$('a.next').trigger('click') //trigger the right button click
+	}
+});
+        
