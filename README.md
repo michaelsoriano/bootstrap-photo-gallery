@@ -7,12 +7,12 @@ Responsive photo gallery using the grid system of Bootstrap and custom jQuery fo
 Files from the tutorial:
 
 "How to create a responsive photo gallery using Bootstrap" :
-http://fearlessflyer.com/create-a-responsive-photo-gallery-with-bootstrap-framework/
+http://michaelsoriano.com/create-a-responsive-photo-gallery-with-bootstrap-framework/
 
 and 
 
 "Let’s Add Next and Previous Buttons to our Bootstrap Photo Gallery"
-http://fearlessflyer.com/next-and-previous-buttons-bootstrap-photo-gallery/
+http://michaelsoriano.com/next-and-previous-buttons-bootstrap-photo-gallery/
 
 To view the demo: 
-http://demo.fearlessflyer.com/html/demo/bootstrap-photo-gallery/
+https://cdn.rawgit.com/michaelsoriano/bootstrap-photo-gallery/master/demo.html
