@@ -15,4 +15,4 @@ and
 http://michaelsoriano.com/next-and-previous-buttons-bootstrap-photo-gallery/
 
 To view the demo: 
-https://cdn.rawgit.com/michaelsoriano/bootstrap-photo-gallery/master/demo.html
+https://rawgit.com/michaelsoriano/bootstrap-photo-gallery/master/demo.html
