@@ -14,10 +14,13 @@
     </script>
     <script>
       $(document).ready(function(){
-        var opts = {};
-        opts.test = 'tetsing';
-        $('ul.first').bsPhotoGallery(opts);
-        $('ul.second, ul.third').bsPhotoGallery(opts);
+        $('ul.first').bsPhotoGallery({
+          "classes" : ["col-lg-2", "col-md-2", "col-sm-3", "col-xs-4", "col-xxs-12"],
+         "hasModal" : false
+        });
+        $('ul.second, ul.third').bsPhotoGallery({
+          "classes" : ["col-lg-4", "col-md-2", "col-sm-3", "col-xs-4"]
+        });
       });
     </script>
   </head>
@@ -35,7 +38,7 @@
           list-style:none;
           margin-bottom:10px;
       }
-      ul li img {
+      ul li.bspHasModal {
           cursor: pointer;
       }
       .modal-body {

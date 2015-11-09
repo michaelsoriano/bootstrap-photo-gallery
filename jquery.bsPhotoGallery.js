@@ -2,37 +2,48 @@
   "use strict";
   $.fn.bsPhotoGallery = function(options) {
 
-    // window.bspNameSpace = window.bspNameSpace || {};
-    //class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12"
+      var settings = $.extend({}, $.fn.bsPhotoGallery.defaults, options);
 
-      var settings = $.extend({
-          // classPrefix: "sr",
-          // firstRowHeader : true,
-          // showLabels : true,
-          // altRowStyle : true
-      }, options);
+      // console.log(settings);
 
       var id = generateId();
+      var classesString = createClassesString();
 
       this.each(function(i){
-        // console.log(id + '-' +i);
+        //ul
         var items = $(this).find('li');
         $(this).attr('data-bsp-ul-id', id);
         $(this).attr('data-bsp-ul-index', i);
-        //set up each item in ul
+
         items.each(function(x){
-          // console.log(id + '-' +i);
-          $(this).attr('data-bsp-li-index', x).on('click', showModal);
+          $(this).addClass(classesString);
+          if(settings.hasModal === true){
+            $(this).addClass('bspHasModal');
+            $(this).attr('data-bsp-li-index', x).on('click', showModal);
+          }
+
         });
       })
 
       var clicked = {};
-      // console.log(this.length);
+
+      function createClassesString(){
+        var classes = '';
+        if(typeof settings !== 'undefined'){
+          if(typeof settings.classes !== 'undefined'){
+            $.each(settings.classes,function(i){
+              classes += settings.classes[i] + ' ';
+            })
+          }
+        }
+        return classes;
+      }
 
       function getCurrentUl(){
         return 'ul[data-bsp-ul-id="'+clicked.ulId+'"][data-bsp-ul-index="'+clicked.ulIndex+'"]';
       }
       function generateId() {
+        //http://fiznool.com/blog/2014/11/16/short-id-generation-in-javascript/
         var ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         var ID_LENGTH = 4;
         var out = '';
@@ -123,14 +134,22 @@
         clicked = {};
       }
 
-      //this is for the next / previous buttons
-      $(document).on('click', 'a.controls[data-bsp-id="'+id+'"]', nextPrevHandler);
-      $(document).on('hidden.bs.modal', '#bsPhotoGalleryModal', clearModalContent);
-
-      //start init methods
-      createModalWrap();
-
-
+      if(settings.hasModal === true){
+        //this is for the next / previous buttons
+        $(document).on('click', 'a.controls[data-bsp-id="'+id+'"]', nextPrevHandler);
+        $(document).on('hidden.bs.modal', '#bsPhotoGalleryModal', clearModalContent);
+        //start init methods
+        createModalWrap();
+      }
+      
       return this;
   };
+
+  /*defaults*/
+  $.fn.bsPhotoGallery.defaults = {
+    'classes' : ['col-lg-2', 'col-md-2', 'col-sm-3', 'col-xs-4'],
+    'hasModal' : true
+  }
+
+
 }(jQuery));
