@@ -3,41 +3,10 @@
   $.fn.bsPhotoGallery = function(options) {
 
       var settings = $.extend({}, $.fn.bsPhotoGallery.defaults, options);
-
-      // console.log(settings);
-
       var id = generateId();
-      var classesString = createClassesString();
-
-      this.each(function(i){
-        //ul
-        var items = $(this).find('li');
-        $(this).attr('data-bsp-ul-id', id);
-        $(this).attr('data-bsp-ul-index', i);
-
-        items.each(function(x){
-          $(this).addClass(classesString);
-          if(settings.hasModal === true){
-            $(this).addClass('bspHasModal');
-            $(this).attr('data-bsp-li-index', x).on('click', showModal);
-          }
-
-        });
-      })
-
+      var classesString = settings.classes;
+      var classesArray = classesString.split(" ");
       var clicked = {};
-
-      function createClassesString(){
-        var classes = '';
-        if(typeof settings !== 'undefined'){
-          if(typeof settings.classes !== 'undefined'){
-            $.each(settings.classes,function(i){
-              classes += settings.classes[i] + ' ';
-            })
-          }
-        }
-        return classes;
-      }
 
       function getCurrentUl(){
         return 'ul[data-bsp-ul-id="'+clicked.ulId+'"][data-bsp-ul-index="'+clicked.ulIndex+'"]';
@@ -133,6 +102,140 @@
         $('#bsPhotoGalleryModal .modal-body').html('');
         clicked = {};
       }
+      function insertClearFix(el,x){
+        var index = (x+1);
+        $.each(classesArray,function(e){
+           switch(classesArray[e]){
+             //large
+             case "col-lg-1":
+                  if($(el).next('li.clearfix').length == 0){
+                    $(el).after('<li class="clearfix visible-lg-block"></li>');
+                  }
+              break;
+             case "col-lg-2":
+                if(index%6 === 0){
+                  $(el).after('<li class="clearfix visible-lg-block"></li>');
+                }
+              break;
+             case "col-lg-3":
+              if(index%4 === 0){
+                $(el).after('<li class="clearfix visible-lg-block"></li>');
+              }
+             break;
+             case "col-lg-4":
+              if(index%3 === 0){
+                $(el).after('<li class="clearfix visible-lg-block"></li>');
+              }
+             break;
+             case "col-lg-5":
+             case "col-lg-6":
+              if(index%2 === 0){
+                $(el).after('<li class="clearfix visible-lg-block"></li>');
+              }
+             break;
+             //medium
+             case "col-md-1":
+                  if($(el).next('li.clearfix').length == 0){
+                    $(el).after('<li class="clearfix visible-md-block"></li>');
+                  }
+              break;
+             case "col-md-2":
+                if(index%6 === 0){
+                  $(el).after('<li class="clearfix visible-md-block"></li>');
+                }
+              break;
+             case "col-md-3":
+              if(index%4 === 0){
+                $(el).after('<li class="clearfix visible-md-block"></li>');
+              }
+             break;
+             case "col-md-4":
+              if(index%3 === 0){
+                $(el).after('<li class="clearfix visible-md-block"></li>');
+              }
+             break;
+             case "col-md-5":
+             case "col-md-6":
+              if(index%2 === 0){
+                $(el).after('<li class="clearfix visible-md-block"></li>');
+              }
+             break;
+             //small
+             case "col-sm-1":
+                  if($(el).next('li.clearfix').length == 0){
+                    $(el).after('<li class="clearfix visible-sm-block"></li>');
+                  }
+              break;
+             case "col-sm-2":
+                if(index%6 === 0){
+                  $(el).after('<li class="clearfix visible-sm-block"></li>');
+                }
+              break;
+             case "col-sm-3":
+              if(index%4 === 0){
+                $(el).after('<li class="clearfix visible-sm-block"></li>');
+              }
+             break;
+             case "col-sm-4":
+              if(index%3 === 0){
+                $(el).after('<li class="clearfix visible-sm-block"></li>');
+              }
+             break;
+             case "col-sm-5":
+             case "col-sm-6":
+              if(index%2 === 0){
+                $(el).after('<li class="clearfix visible-sm-block"></li>');
+              }
+             break;
+             //x-small
+             case "col-xs-1":
+                  if($(el).next('li.clearfix').length == 0){
+                    $(el).after('<li class="clearfix visible-xs-block"></li>');
+                  }
+              break;
+             case "col-xs-2":
+                if(index%6 === 0){
+                  $(el).after('<li class="clearfix visible-xs-block"></li>');
+                }
+              break;
+             case "col-xs-3":
+              if(index%4 === 0){
+                $(el).after('<li class="clearfix visible-xs-block"></li>');
+              }
+             break;
+             case "col-xs-4":
+              if(index%3 === 0){
+                $(el).after('<li class="clearfix visible-xs-block"></li>');
+              }
+             break;
+             case "col-xs-5":
+             case "col-xs-6":
+              if(index%2 === 0){
+                $(el).after('<li class="clearfix visible-xs-block"></li>');
+              }
+             break;
+           }
+        });
+      }
+
+
+      this.each(function(i){
+        //ul
+        var items = $(this).find('li');
+        $(this).attr('data-bsp-ul-id', id);
+        $(this).attr('data-bsp-ul-index', i);
+
+        items.each(function(x){
+          insertClearFix(this,x);
+          $(this).addClass(classesString);
+          $(this).attr('data-bsp-li-index', x);
+          $(this).find('img').addClass('img-responsive');
+          if(settings.hasModal === true){
+            $(this).addClass('bspHasModal');
+            $(this).on('click', showModal);
+          }
+        });
+      })
 
       if(settings.hasModal === true){
         //this is for the next / previous buttons
@@ -141,13 +244,12 @@
         //start init methods
         createModalWrap();
       }
-      
+
       return this;
   };
-
   /*defaults*/
   $.fn.bsPhotoGallery.defaults = {
-    'classes' : ['col-lg-2', 'col-md-2', 'col-sm-3', 'col-xs-4'],
+    'classes' : 'col-lg-2 col-md-2 col-sm-3 col-xs-4',
     'hasModal' : true
   }
 
