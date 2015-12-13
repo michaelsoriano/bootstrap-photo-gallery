@@ -52,6 +52,10 @@
       function showModal(){
 
           var src = $(this).find('img').attr('src');
+          var largeImg = $(this).find('img').attr('data-bsp-large-src');
+          if(typeof largeImg === 'string'){
+                src = largeImg;
+          }
           var index = $(this).attr('data-bsp-li-index');
           var ulIndex = $(this).parent('ul').attr('data-bsp-ul-index');
           var ulId = $(this).parent('ul').attr('data-bsp-ul-id');
@@ -80,8 +84,12 @@
 
           var ul = $(getCurrentUl());
           var index = $(this).attr('href');
-          var src = ul.find('li[data-bsp-li-index="'+index+'"] img').attr('src');
 
+          var src = ul.find('li[data-bsp-li-index="'+index+'"] img').attr('src');
+          var largeImg = ul.find('li[data-bsp-li-index="'+index+'"] img').attr('data-bsp-large-src');
+          if(typeof largeImg === 'string'){
+                src = largeImg;
+          }
           $('.modal-body img').attr('src', src);
 
           clicked.prevImg = parseInt(index) - 1;
