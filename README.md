@@ -35,6 +35,8 @@ $('ul.first').bsPhotoGallery({
   });
 ```
 
+If you need to show a different image in the modal box, you need to add an extra attribute to the image "data-bsp-large-src" with the value as the path to the image.
+
 The original tutorial can be found here: 
 
 "How to create a responsive photo gallery using Bootstrap" :
