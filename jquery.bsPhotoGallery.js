@@ -73,13 +73,20 @@
           var img = '<img src="' + clicked.img + '" class="img-responsive"/>';
 
           html += img;
+          html += '<span class="glyphicon glyphicon-remove-circle" style="position: absolute; right: -14px; top: -11px; font-size: 30px; color:#fff; text-shadow: 1px 1px 18px #000;"></span>';
           html += '<div style="height:25px;clear:both;display:block;">';
           html += '<a class="controls next" data-bsp-id="'+clicked.ulId+'" href="'+ (clicked.nextImg) + '">next &raquo;</a>';
           html += '<a class="controls previous" data-bsp-id="'+clicked.ulId+'" href="' + (clicked.prevImg) + '">&laquo; prev</a>';
           html += '</div>';
           $('#bsPhotoGalleryModal .modal-body').html(html);
+          $('.glyphicon-remove-circle').on('click', closeModal);
           showHideControls();
       }
+
+      function closeModal(){
+        $('#bsPhotoGalleryModal').modal('hide');
+      }
+
       function nextPrevHandler(){
 
           var ul = $(getCurrentUl());
