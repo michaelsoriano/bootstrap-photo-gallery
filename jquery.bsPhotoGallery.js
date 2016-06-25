@@ -30,7 +30,7 @@
         var modal = '';
         modal += '<div class="modal fade" id="bsPhotoGalleryModal" tabindex="-1" role="dialog"';
         modal += 'aria-labelledby="myModalLabel" aria-hidden="true">';
-        modal += '<div class="modal-dialog"><div class="modal-content">';
+        modal += '<div class="modal-dialog modal-lg"><div class="modal-content">';
         modal += '<div class="modal-body"></div></div></div></div>';
         $('body').append(modal);
 
@@ -59,7 +59,11 @@
           var index = $(this).attr('data-bsp-li-index');
           var ulIndex = $(this).parent('ul').attr('data-bsp-ul-index');
           var ulId = $(this).parent('ul').attr('data-bsp-ul-id');
-
+          var theImg = $(this).find('img');
+          var pText = $(this).find('.text').html();        
+          var modalText = typeof pText !== 'undefined' ? pText : 'undefined';
+          var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
+          
           clicked.img = src;
           clicked.prevImg = parseInt(index) - parseInt(1);
       		clicked.nextImg = parseInt(index) + parseInt(1);
@@ -73,11 +77,19 @@
           var img = '<img src="' + clicked.img + '" class="img-responsive"/>';
 
           html += img;
-          html += '<span class="glyphicon glyphicon-remove-circle" style="position: absolute; right: -14px; top: -11px; font-size: 30px; color:#fff; text-shadow: 1px 1px 18px #000;"></span>';
-          html += '<div style="height:25px;clear:both;display:block;">';
-          html += '<a class="controls next" data-bsp-id="'+clicked.ulId+'" href="'+ (clicked.nextImg) + '">next &raquo;</a>';
-          html += '<a class="controls previous" data-bsp-id="'+clicked.ulId+'" href="' + (clicked.prevImg) + '">&laquo; prev</a>';
+          html += '<span class="glyphicon glyphicon-remove-circle"></span>';
+          html += '<div class="bsp-text-container">';
+          
+          if(alt !== null){
+            html += '<h6>'+alt+'</h6>'
+          }
+          if(typeof pText !== 'undefined'){
+            html += '<p class="pText">'+pText+'</p>'
+          }        
           html += '</div>';
+          html += '<a class="bsp-controls next" data-bsp-id="'+clicked.ulId+'" href="'+ (clicked.nextImg) + '"><span class="glyphicon glyphicon-chevron-right"></span></a>';
+          html += '<a class="bsp-controls previous" data-bsp-id="'+clicked.ulId+'" href="' + (clicked.prevImg) + '"><span class="glyphicon glyphicon-chevron-left"></span></a>';
+        
           $('#bsPhotoGalleryModal .modal-body').html(html);
           $('.glyphicon-remove-circle').on('click', closeModal);
           showHideControls();
@@ -96,8 +108,23 @@
           var largeImg = ul.find('li[data-bsp-li-index="'+index+'"] img').attr('data-bsp-large-src');
           if(typeof largeImg === 'string'){
                 src = largeImg;
-          }
+          } 
+          
+          var pText = ul.find('li[data-bsp-li-index="'+index+'"] .text').html();        
+          var modalText = typeof pText !== 'undefined' ? pText : 'undefined';
+          var theImg = ul.find('li[data-bsp-li-index="'+index+'"] img');
+          var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
+           
           $('.modal-body img').attr('src', src);
+          var txt = '';
+          if(alt !== null){
+            txt += '<h6>'+alt+'</h6>'
+          }
+          if(typeof pText !== 'undefined'){
+            txt += '<p class="pText">'+pText+'</p>'
+          }        
+          
+          $('.bsp-text-container').html(txt); 
 
           clicked.prevImg = parseInt(index) - 1;
           clicked.nextImg = parseInt(clicked.prevImg) + 2;
@@ -241,10 +268,14 @@
         $(this).attr('data-bsp-ul-index', i);
 
         items.each(function(x){
+          var theImg = $(this).find('img'); 
           insertClearFix(this,x);
           $(this).addClass(classesString);
           $(this).attr('data-bsp-li-index', x);
-          $(this).find('img').addClass('img-responsive');
+          theImg.addClass('img-responsive');
+          if(settings.fullHeight){
+            theImg.wrap('<div class="imgWrapper"></div>')
+          }
           if(settings.hasModal === true){
             $(this).addClass('bspHasModal');
             $(this).on('click', showModal);
@@ -254,7 +285,7 @@
 
       if(settings.hasModal === true){
         //this is for the next / previous buttons
-        $(document).on('click', 'a.controls[data-bsp-id="'+id+'"]', nextPrevHandler);
+        $(document).on('click', 'a.bsp-controls[data-bsp-id="'+id+'"]', nextPrevHandler);
         $(document).on('hidden.bs.modal', '#bsPhotoGalleryModal', clearModalContent);
         //start init methods
         createModalWrap();
@@ -265,7 +296,8 @@
   /*defaults*/
   $.fn.bsPhotoGallery.defaults = {
     'classes' : 'col-lg-2 col-md-2 col-sm-3 col-xs-4',
-    'hasModal' : true
+    'hasModal' : true, 
+    'fullHeight' : true
   }
 
 
