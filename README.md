@@ -1,6 +1,6 @@
 # bootstrap-photo-gallery
 
-A simple jQuery plugin that will create a Bootstrap based Photo Gallery for your images. Supports variable height for the images and captions. An optional "modal" box with "next" and "previous" paging is also included. Plugin requires Bootstrap (3.3.5 and above) jQuery (1.10 and above). 
+A jQuery plugin that will create a Bootstrap based Photo Gallery for your images. Supports variable height for the images and captions. An optional "modal" box with "next" and "previous" paging is also included. Plugin requires Bootstrap (3.3.5 and above) jQuery (1.10 and above). 
 
 [**View Demo**](https://rawgit.com/michaelsoriano/bootstrap-photo-gallery/master/demo.html)
 
