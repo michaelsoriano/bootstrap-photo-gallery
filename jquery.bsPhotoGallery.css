@@ -9,7 +9,7 @@
 #bsPhotoGalleryModal .modal-body {
     padding:0px !important;
 }
-#bsPhotoGalleryModal .glyphicon-remove-circle {
+#bsPhotoGalleryModal .bsp-close {
   position: absolute; 
   right: -14px; 
   top: -11px; 
@@ -18,7 +18,7 @@
   text-shadow: 1px 1px 18px #000;
 }
 
-#bsPhotoGalleryModal .glyphicon-remove-circle:hover {
+#bsPhotoGalleryModal .bsp-close:hover {
   cursor: pointer;
   opacity:.6;
   text-shadow: none;
