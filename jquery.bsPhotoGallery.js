@@ -77,7 +77,7 @@
           var img = '<img src="' + clicked.img + '" class="img-responsive"/>';
 
           html += img;
-          html += '<span class="glyphicon glyphicon-remove-circle"></span>';
+          html += '<span class="' + settings.iconClose + ' bsp-close"></span>';
           html += '<div class="bsp-text-container">';
           
           if(alt !== null){
@@ -87,11 +87,11 @@
             html += '<p class="pText">'+pText+'</p>'
           }        
           html += '</div>';
-          html += '<a class="bsp-controls next" data-bsp-id="'+clicked.ulId+'" href="'+ (clicked.nextImg) + '"><span class="glyphicon glyphicon-chevron-right"></span></a>';
-          html += '<a class="bsp-controls previous" data-bsp-id="'+clicked.ulId+'" href="' + (clicked.prevImg) + '"><span class="glyphicon glyphicon-chevron-left"></span></a>';
+          html += '<a class="bsp-controls next" data-bsp-id="'+clicked.ulId+'" href="'+ (clicked.nextImg) + '"><span class="' + settings.iconRight + '"></span></a>';
+          html += '<a class="bsp-controls previous" data-bsp-id="'+clicked.ulId+'" href="' + (clicked.prevImg) + '"><span class="' + settings.iconLeft + '"></span></a>';
         
           $('#bsPhotoGalleryModal .modal-body').html(html);
-          $('.glyphicon-remove-circle').on('click', closeModal);
+          $('.bsp-close').on('click', closeModal);
           showHideControls();
       }
 
@@ -297,7 +297,10 @@
   $.fn.bsPhotoGallery.defaults = {
     'classes' : 'col-lg-2 col-md-2 col-sm-3 col-xs-4',
     'hasModal' : true, 
-    'fullHeight' : true
+    'fullHeight' : true,
+    'iconClose' : 'glyphicon glyphicon-remove-circle',
+    'iconLeft' : 'glyphicon glyphicon-chevron-left',
+    'iconRight' : 'glyphicon glyphicon-chevron-right'
   }
 
 
