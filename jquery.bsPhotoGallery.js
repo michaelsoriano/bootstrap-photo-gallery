@@ -115,7 +115,7 @@
           var theImg = ul.find('li[data-bsp-li-index="'+index+'"] img');
           var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
            
-          $('.modal-body img').attr('src', src);
+          $('#bsPhotoGalleryModal .modal-body img').attr('src', src);
           var txt = '';
           if(alt !== null){
             txt += '<h6>'+alt+'</h6>'
