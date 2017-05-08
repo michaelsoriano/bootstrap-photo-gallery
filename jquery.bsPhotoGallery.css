@@ -10,11 +10,11 @@
     padding:0px !important;
 }
 #bsPhotoGalleryModal .bsp-close {
-  position: absolute; 
-  right: -14px; 
-  top: -11px; 
-  font-size: 30px; 
-  color:#fff; 
+  position: absolute;
+  right: -14px;
+  top: -11px;
+  font-size: 30px;
+  color:#fff;
   text-shadow: 1px 1px 18px #000;
 }
 
@@ -22,7 +22,7 @@
   cursor: pointer;
   opacity:.6;
   text-shadow: none;
-  
+
 }
 .bspHasModal {
   cursor: pointer;
@@ -37,8 +37,8 @@
   max-height: 99px;
 }
 
-a.bsp-controls, 
-a.bsp-controls:visited, 
+a.bsp-controls,
+a.bsp-controls:visited,
 a.bsp-controls:active {
   position: absolute;
   top: 44%;
@@ -74,8 +74,8 @@ a.bsp-controls:hover {
   font-size: 11px;
   margin-bottom: 0px;
   padding: 0 12px 5px;
-} 
- 
+}
+
 
 @media screen and (max-width: 380px){
    .col-xxs-12 {
