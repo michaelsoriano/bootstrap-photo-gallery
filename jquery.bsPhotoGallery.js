@@ -87,9 +87,11 @@
             html += '<p class="pText">'+pText+'</p>'
           }        
           html += '</div>';
-          html += '<a class="bsp-controls next" data-bsp-id="'+clicked.ulId+'" href="'+ (clicked.nextImg) + '"><span class="' + settings.iconRight + '"></span></a>';
-          html += '<a class="bsp-controls previous" data-bsp-id="'+clicked.ulId+'" href="' + (clicked.prevImg) + '"><span class="' + settings.iconLeft + '"></span></a>';
         
+			    if(settings.showControl){
+            html += '<a class="bsp-controls next" data-bsp-id="'+clicked.ulId+'" href="'+ (clicked.nextImg) + '"><span class="' + settings.iconRight + '"></span></a>';
+            html += '<a class="bsp-controls previous" data-bsp-id="'+clicked.ulId+'" href="' + (clicked.prevImg) + '"><span class="' + settings.iconLeft + '"></span></a>';
+          }
           $('#bsPhotoGalleryModal .modal-body').html(html);
           $('.bsp-close').on('click', closeModal);
           showHideControls();
@@ -296,6 +298,7 @@
   /*defaults*/
   $.fn.bsPhotoGallery.defaults = {
     'classes' : 'col-lg-2 col-md-2 col-sm-3 col-xs-4',
+    'showControl' : true,
     'hasModal' : true, 
     'fullHeight' : true,
     'iconClose' : 'glyphicon glyphicon-remove-circle',
