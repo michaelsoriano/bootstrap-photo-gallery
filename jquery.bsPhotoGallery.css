@@ -34,7 +34,10 @@
 }
 .imgWrapper {
   overflow: hidden;
-  max-height: 99px;
+  height: 100px;
+  background-position-x: center !important;
+  background-position-y: center !important;
+  background-size: cover !important;
 }
 
 a.bsp-controls,
