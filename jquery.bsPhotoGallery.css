@@ -1,3 +1,12 @@
+ul[data-bsp-ul-index] {
+          padding:0 0 0 0;
+          margin:0 0 40px 0;
+ }
+ul[data-bsp-ul-index] li {
+          list-style:none;
+          margin-bottom:10px;
+} 
+
 #bsPhotoGalleryModal .modal-content {
     border-radius:0;
 }
@@ -27,12 +36,21 @@
 .bspHasModal {
   cursor: pointer;
 }
-.bspHasModal .text {
+.bspText.bspShortText {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.imgWrapper {
+.bspText {
+  color:#666;
+  font-size:11px;
+  margin-bottom:10px;
+  padding:12px;
+  background:#fff;
+}
+
+
+.bspImgWrapper {
   overflow: hidden;
   height: 100px;
   background-position-x: center !important;

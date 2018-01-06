@@ -60,7 +60,7 @@
           var ulIndex = $(this).parent('ul').attr('data-bsp-ul-index');
           var ulId = $(this).parent('ul').attr('data-bsp-ul-id');
           var theImg = $(this).find('img');
-          var pText = $(this).find('.text').html();        
+          var pText = $(this).find('p').html();        
           var modalText = typeof pText !== 'undefined' ? pText : 'undefined';
           var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
           
@@ -112,7 +112,8 @@
                 src = largeImg;
           } 
           
-          var pText = ul.find('li[data-bsp-li-index="'+index+'"] .text').html();        
+          var pText = ul.find('li[data-bsp-li-index="'+index+'"] p').html();   
+          console.log(pText)     
           var modalText = typeof pText !== 'undefined' ? pText : 'undefined';
           var theImg = ul.find('li[data-bsp-li-index="'+index+'"] img');
           var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
@@ -155,15 +156,22 @@
 
         items.each(function(x){
           var theImg = $(this).find('img'); 
+          var theText = $(this).find('p');   
           var src = theImg.attr('src');
        
           $(this).addClass(classesString);
           $(this).attr('data-bsp-li-index', x);
        
-          // if(settings.fullHeight){
-            theImg.wrap('<div class="imgWrapper" style="background:url(\''+src+'\');"></div>');
-            theImg.remove();
-          // }
+          
+          theImg.wrap('<div class="bspImgWrapper" style="background:url(\''+src+'\');"></div>');
+          theText.addClass('bspText');
+
+          if(settings.shortText === true){
+            theText.addClass('bspShortText');
+          }
+
+          theImg.remove();
+         
           if(settings.hasModal === true){
             $(this).addClass('bspHasModal');
             $(this).on('click', showModal);
@@ -186,7 +194,7 @@
     'classes' : 'col-xl-2 col-lg-2 col-md-2 col-sm-3 col-xs-4',
     'showControl' : true,
     'hasModal' : true, 
-    // 'fullHeight' : true,
+    'shortText' : true,
     'iconClose' : 'glyphicon glyphicon-remove-circle',
     'iconLeft' : 'glyphicon glyphicon-chevron-left',
     'iconRight' : 'glyphicon glyphicon-chevron-right'
