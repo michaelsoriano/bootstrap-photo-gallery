@@ -17,7 +17,13 @@ ul[data-bsp-ul-index] li {
 }
 #bsPhotoGalleryModal .modal-body {
     padding:0px !important;
+    text-align: center;
 }
+#bsPhotoGalleryModal .bsp-text-container {
+  text-align:left;
+  padding-top:10px;
+}
+
 #bsPhotoGalleryModal .bsp-close {
   position: absolute;
   right: -14px;
@@ -47,15 +53,6 @@ ul[data-bsp-ul-index] li {
   margin-bottom:10px;
   padding:12px;
   background:#fff;
-}
-
-
-.bspImgWrapper {
-  overflow: hidden;
-  height: 100px;
-  background-position-x: center !important;
-  background-position-y: center !important;
-  background-size: cover !important;
 }
 
 a.bsp-controls,
@@ -97,12 +94,22 @@ a.bsp-controls:hover {
   padding: 0 12px 5px;
 }
 
+.bspImgWrapper {
+  overflow: hidden;
+  height: 100px;
+  background-position-x: center !important;
+  background-position-y: center !important;
+  background-size: cover !important;
+}
 
-@media screen and (max-width: 380px){
-   .col-xxs-12 {
-     width:100%;
-   }
-   .col-xxs-12 img {
-     width:100%;
-   }
+@media (min-width: 992px){
+  #bsPhotoGalleryModal .modal-lg {
+      max-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 575px){
+  .bspImgWrapper {
+    height: 150px;
+  }
 }

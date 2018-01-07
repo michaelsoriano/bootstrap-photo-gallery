@@ -12,7 +12,6 @@
         return 'ul[data-bsp-ul-id="'+clicked.ulId+'"][data-bsp-ul-index="'+clicked.ulIndex+'"]';
       }
       function generateId() {
-        //http://fiznool.com/blog/2014/11/16/short-id-generation-in-javascript/
         var ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         var ID_LENGTH = 4;
         var out = '';
@@ -51,12 +50,11 @@
     	}
       function showModal(){
 
-          var src = $(this).find('img').attr('src');
-          var largeImg = $(this).find('img').attr('data-bsp-large-src');
-          if(typeof largeImg === 'string'){
-                src = largeImg;
-          }
+          var bImgString = $(this).find('.bspImgWrapper')[0].style.backgroundImage;
+          var src = bImgString.replace(/url\(\"/g,'').replace(/\"\)/g,'');        
+          
           var index = $(this).attr('data-bsp-li-index');
+
           var ulIndex = $(this).parent('ul').attr('data-bsp-ul-index');
           var ulId = $(this).parent('ul').attr('data-bsp-ul-id');
           var theImg = $(this).find('img');
@@ -105,15 +103,8 @@
 
           var ul = $(getCurrentUl());
           var index = $(this).attr('href');
-
-          var src = ul.find('li[data-bsp-li-index="'+index+'"] img').attr('src');
-          var largeImg = ul.find('li[data-bsp-li-index="'+index+'"] img').attr('data-bsp-large-src');
-          if(typeof largeImg === 'string'){
-                src = largeImg;
-          } 
-          
-          var pText = ul.find('li[data-bsp-li-index="'+index+'"] p').html();   
-          console.log(pText)     
+          var src = ul.find('li[data-bsp-li-index="'+index+'"] img').attr('src');          
+          var pText = ul.find('li[data-bsp-li-index="'+index+'"] p').html();             
           var modalText = typeof pText !== 'undefined' ? pText : 'undefined';
           var theImg = ul.find('li[data-bsp-li-index="'+index+'"] img');
           var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
@@ -155,7 +146,7 @@
         $(this).attr('data-bsp-ul-index', i);
 
         items.each(function(x){
-          var theImg = $(this).find('img'); 
+          var theImg = $(this).find('img');
           var theText = $(this).find('p');   
           var src = theImg.attr('src');
        
@@ -191,13 +182,13 @@
   };
   /*defaults*/
   $.fn.bsPhotoGallery.defaults = {
-    'classes' : 'col-xl-2 col-lg-2 col-md-2 col-sm-3 col-xs-4',
+    'classes' : 'col-xl-2 col-lg-2 col-md-2 col-sm-4',
     'showControl' : true,
     'hasModal' : true, 
     'shortText' : true,
-    'iconClose' : 'glyphicon glyphicon-remove-circle',
-    'iconLeft' : 'glyphicon glyphicon-chevron-left',
-    'iconRight' : 'glyphicon glyphicon-chevron-right'
+    // 'iconClose' : 'glyphicon glyphicon-remove-circle',
+    // 'iconLeft' : 'glyphicon glyphicon-chevron-left',
+    // 'iconRight' : 'glyphicon glyphicon-chevron-right'
   }
 
 
