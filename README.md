@@ -45,17 +45,17 @@ If you want an older version of the plugin (uses Bootstrap 3), download this [**
 <strong>Update 11/14/2015: </strong>This code for this tutorial have been converted into a jQuery plugin. This means that it's now easier to create a responsive photo gallery. The original tutorial is still available below (where is says "Original Tutorial"). Note that you don't need to follow it if you're using the plugin. But it's good to know the inner workings of Bootstrap regardless.
 
 
-###How to Use:
+### How to Use:
 
 Make sure you include the required files before the plugin.
 
 You need to create an unordered list of your images.
 
 ```
-<ul class="first">
+<ul>
    <li>
        <img alt="Night away"  src="images/photodune-174908-rocking-the-night-away-xs.jpg">
-       <p class="text">Optional text. This will also show in the modal</p>
+       <p>Optional text. This will also show in the modal</p>
    </li>
    <li>
        <img alt="Yellow boy" src="images/photodune-287182-blah-blah-blah-yellow-road-sign-xs.jpg">
@@ -68,20 +68,62 @@ You need to create an unordered list of your images.
 
 ```
 
-Then initialize the plugin and pass in the Boostrap classes for different sizes as a parameter. The "hasModal" is true by default - but can be turned off by setting it to "false".
+Then initialize the plugin. 
 
 ```
-$('ul.first').bsPhotoGallery({
-    "classes" : "col-lg-2 col-md-4 col-sm-3 col-xs-4 col-xxs-12",
-    "hasModal" : true
-  });
+$('ul.first').bsPhotoGallery();
 ```
 
-If you need to show a different image in the modal box, you need to add an extra attribute to the image "data-bsp-large-src" with the value as the path to the image.
+You can pass the different options such as BS classes for different sizes
 
-If you need to modify the modal styles without messing with the default Bootstrap - a unique ID is assigned to the modal by the plugin. The ID is called: #bsPhotoGalleryModal. An ID is used as supposed to a class because only 1 modal can show at a time.
+```
+opts = {
+   "classes" : "col-lg-2 col-md-4 col-sm-3 col-xs-12",
+    "hasModal" : false
+}
+$('ul.first').bsPhotoGallery(opts);
+```
 
-The original tutorial can be found here:
+The following options are available: 
+
+<table class="table table-bordered table-striped responsive-utilities" style="margin-top:25px; margin-bottom:30px;">
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Description</th>
+<th class="hidden-xs">Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th><code>classes</code></th>
+<td class="is-visible">string</td>
+<td>Bootstrap Grid classes</td>
+<td class="is-hidden hidden-xs">col-xl-2 col-lg-2 col-md-2 col-sm-4</td>
+</tr>
+<tr>
+<th><code>hasModal</code></th>
+<td class="is-hidden">bool</td>
+<td>show larger image in a modal when clicked</td>
+<td class="is-visible hidden-xs">true</td>
+</tr>
+<tr>
+<th><code>showControl</code></th>
+<td class="is-hidden">bool</td>
+<td>show next / previous buttons in modal</td>
+<td class="is-hidden hidden-xs">true</td>
+</tr> 
+<th><code>shortText</code></th>
+<td class="is-hidden">bool</td>
+<td>truncate text to a single line in grid</td>
+<td class="is-hidden hidden-xs">true</td>
+</tr> 
+</tbody>
+</table>
+
+
+The original (and outdated) tutorial can be found here:
 
 "How to create a responsive photo gallery using Bootstrap" :
 http://michaelsoriano.com/create-a-responsive-photo-gallery-with-bootstrap-framework/
