@@ -6,7 +6,7 @@ A jQuery plugin that will automatically create a Photo Gallery based on an unord
 
 If you want an older version of the plugin (uses Bootstrap 3), download this [**branch**](https://github.com/michaelsoriano/bootstrap-photo-gallery/tree/v1) 
 
-[**View Demo**](https://github.com/michaelsoriano/bootstrap-photo-gallery)
+[**View Demo**](http://demo.michaelsoriano.com/bootstrap-gallery/master/demo.html)
 
 ![alt tag](http://michaelsoriano.com/wp-content/uploads/2013/11/bspgallery.gif)
 
@@ -91,7 +91,7 @@ The following options are available:
 
 <strong>Update 1/6/2018:</strong> Support for Bootstrap 4 has been added. BS4 has made several changes and removed plenty of old functionality - so the plugin had to be updated. 
 
-1) Removed Glyphicons. Added svg icons for the modal controls
+1) Removed Glyphicons. Embedded svg code for the icons for the modal controls
 
 2) Images in the gallery are now using background images - with fixed height. Background images with "cover" positioning is better than using images + resizing = especially for mobile
 
