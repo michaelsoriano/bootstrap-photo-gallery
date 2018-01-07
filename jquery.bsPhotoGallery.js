@@ -60,17 +60,15 @@
           var index = $(this).attr('data-bsp-li-index');
           var ulIndex = $(this).parent('ul').attr('data-bsp-ul-index');
           var ulId = $(this).parent('ul').attr('data-bsp-ul-id');
-          // var theImg = $(this).find('img');
           var pText = $(this).find('p').html();        
           var modalText = typeof pText !== 'undefined' ? pText : 'undefined';
-          // var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
+
           
           clicked.img = src;
           clicked.prevImg = parseInt(index) - parseInt(1);
       		clicked.nextImg = parseInt(index) + parseInt(1);
           clicked.ulIndex = ulIndex;
           clicked.ulId = ulId;
-
 
           $('#bsPhotoGalleryModal').modal();
 
@@ -79,11 +77,8 @@
 
           html += img;
           html += '<span class="bsp-close"><img src="images/close.svg"></span>';
-          html += '<div class="bsp-text-container">';
-          
-          // if(alt !== null){
-          //   html += '<h6>'+alt+'</h6>'
-          // }
+          html += '<div class="bsp-text-container">';          
+      
           if(typeof pText !== 'undefined'){
             html += '<p class="pText">'+pText+'</p>'
           }        
@@ -108,26 +103,18 @@
 
           var ul = $(getCurrentUl());
           var index = $(this).attr('href');
-          
-
-          // var bImgString = $(this).find('.bspImgWrapper')[0].style.backgroundImage;
 
           var istr = ul.find('li[data-bsp-li-index="'+index+'"] .bspImgWrapper')[0].style.backgroundImage;           
           var src = getSrcfromStyle(istr);
           var pText = ul.find('li[data-bsp-li-index="'+index+'"] p').html();             
           var modalText = typeof pText !== 'undefined' ? pText : 'undefined';
-          // var theImg = ul.find('li[data-bsp-li-index="'+index+'"] img');
-          // var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
+
            
           $('#bsPhotoGalleryModal .modal-body img.bsp-modal-main-image').attr('src', src);
-          var txt = '';
-          // if(alt !== null){
-          //   txt += '<h6>'+alt+'</h6>'
-          // }
+          var txt = '';     
           if(typeof pText !== 'undefined'){
             txt += '<p class="pText">'+pText+'</p>'
-          }        
-          
+          }                  
           $('.bsp-text-container').html(txt); 
 
           clicked.prevImg = parseInt(index) - 1;
