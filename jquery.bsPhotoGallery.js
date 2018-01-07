@@ -75,7 +75,7 @@
           var img = '<img src="' + clicked.img + '" class="img-responsive"/>';
 
           html += img;
-          html += '<span class="' + settings.iconClose + ' bsp-close"></span>';
+          html += '<span class="bsp-close"><img src="images/close.svg"></span>';
           html += '<div class="bsp-text-container">';
           
           if(alt !== null){
@@ -87,8 +87,10 @@
           html += '</div>';
         
 			    if(settings.showControl){
-            html += '<a class="bsp-controls next" data-bsp-id="'+clicked.ulId+'" href="'+ (clicked.nextImg) + '"><span class="' + settings.iconRight + '"></span></a>';
-            html += '<a class="bsp-controls previous" data-bsp-id="'+clicked.ulId+'" href="' + (clicked.prevImg) + '"><span class="' + settings.iconLeft + '"></span></a>';
+            html += '<a class="bsp-controls next" data-bsp-id="'+clicked.ulId+'" href="'+ (clicked.nextImg) + '">';
+            html += '<img src="images/chevron-right.svg"/></a>';
+            html += '<a class="bsp-controls previous" data-bsp-id="'+clicked.ulId+'" href="' + (clicked.prevImg) + '">'; 
+            html += '<img src="images/chevron-left.svg"/></a></a>';
           }
           $('#bsPhotoGalleryModal .modal-body').html(html);
           $('.bsp-close').on('click', closeModal);
@@ -185,10 +187,7 @@
     'classes' : 'col-xl-2 col-lg-2 col-md-2 col-sm-4',
     'showControl' : true,
     'hasModal' : true, 
-    'shortText' : true,
-    // 'iconClose' : 'glyphicon glyphicon-remove-circle',
-    // 'iconLeft' : 'glyphicon glyphicon-chevron-left',
-    // 'iconRight' : 'glyphicon glyphicon-chevron-right'
+    'shortText' : true
   }
 
 
