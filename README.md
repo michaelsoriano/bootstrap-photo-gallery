@@ -1,12 +1,30 @@
 # bootstrap-photo-gallery
 
-A jQuery plugin that will create a Bootstrap based Photo Gallery for your images. Supports variable height for the images and captions. An optional "modal" box with "next" and "previous" paging is also included. Plugin requires Bootstrap (3.3.5 and above) jQuery (1.10 and above).
+A jQuery plugin that will automatically create a Photo Gallery based on an unordered list of images. Supports image captions, modal, with "next" and "previous" paging. Plugin requires Bootstrap and jQuery.
 
-[**View Demo**](https://rawgit.com/michaelsoriano/bootstrap-photo-gallery/master/demo.html)
+### Current version Bootstrap 4
+
+If you want an older version of the plugin (uses Bootstrap 3), download this [**branch**](https://github.com/michaelsoriano/bootstrap-photo-gallery/tree/v1) 
+
+[**View Demo**](https://github.com/michaelsoriano/bootstrap-photo-gallery)
 
 ![alt tag](http://michaelsoriano.com/wp-content/uploads/2013/11/bspgallery.gif)
 
-###Change Log:
+### Change Log:
+
+<strong>Update 1/6/2018:</strong> Support for Bootstrap 4 has been added. BS4 has made several changes and removed plenty of old functionality - so the plugin had to be updated. 
+
+1) Removed Glyphicons. Added svg icons for the modal controls
+
+2) Images in the gallery are now using background images - with fixed height. Background images with "cover" positioning is better than using images + resizing = especially for mobile
+
+3) Added a new option "shortText". This is for the caption to be truncated to a single line if set to true. 
+
+4) Moved demo styles to plugin. This just makes sense. If you need to update - update the CSS file. 
+
+5) Removed fullHeight option 
+
+6) Made classes more unique to the plugin
 
 <strong>Update 6/24/2016: </strong> Several enhancements have been made to the plugin. See the following list for the most recent changes:
 
