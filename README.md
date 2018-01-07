@@ -8,7 +8,7 @@ If you want an older version of the plugin (uses Bootstrap 3), download this [**
 
 [**View Demo**](http://demo.michaelsoriano.com/bootstrap-gallery/master/demo.html)
 
-![alt tag](http://michaelsoriano.com/wp-content/uploads/2013/11/bspgallery.gif)
+![alt tag](http://michaelsoriano.com/wp-content/uploads/2018/01/bs-gallery.gif)
 
 ### How to Use:
 
