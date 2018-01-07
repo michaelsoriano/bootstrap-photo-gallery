@@ -47,20 +47,23 @@
     		}else{
     			$('a.previous').show()
     		}
-    	}
+      }
+      
+      function getSrcfromStyle(istr){
+        return istr.replace(/url\(\"/g,'').replace(/\"\)/g,'');    
+      }
+
       function showModal(){
 
           var bImgString = $(this).find('.bspImgWrapper')[0].style.backgroundImage;
-          var src = bImgString.replace(/url\(\"/g,'').replace(/\"\)/g,'');        
-          
+          var src = getSrcfromStyle(bImgString);
           var index = $(this).attr('data-bsp-li-index');
-
           var ulIndex = $(this).parent('ul').attr('data-bsp-ul-index');
           var ulId = $(this).parent('ul').attr('data-bsp-ul-id');
-          var theImg = $(this).find('img');
+          // var theImg = $(this).find('img');
           var pText = $(this).find('p').html();        
           var modalText = typeof pText !== 'undefined' ? pText : 'undefined';
-          var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
+          // var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
           
           clicked.img = src;
           clicked.prevImg = parseInt(index) - parseInt(1);
@@ -72,15 +75,15 @@
           $('#bsPhotoGalleryModal').modal();
 
           var html = '';
-          var img = '<img src="' + clicked.img + '" class="img-responsive"/>';
+          var img = '<img src="' + clicked.img + '" class="img-responsive bsp-modal-main-image"/>';
 
           html += img;
           html += '<span class="bsp-close"><img src="images/close.svg"></span>';
           html += '<div class="bsp-text-container">';
           
-          if(alt !== null){
-            html += '<h6>'+alt+'</h6>'
-          }
+          // if(alt !== null){
+          //   html += '<h6>'+alt+'</h6>'
+          // }
           if(typeof pText !== 'undefined'){
             html += '<p class="pText">'+pText+'</p>'
           }        
@@ -105,17 +108,22 @@
 
           var ul = $(getCurrentUl());
           var index = $(this).attr('href');
-          var src = ul.find('li[data-bsp-li-index="'+index+'"] img').attr('src');          
+          
+
+          // var bImgString = $(this).find('.bspImgWrapper')[0].style.backgroundImage;
+
+          var istr = ul.find('li[data-bsp-li-index="'+index+'"] .bspImgWrapper')[0].style.backgroundImage;           
+          var src = getSrcfromStyle(istr);
           var pText = ul.find('li[data-bsp-li-index="'+index+'"] p').html();             
           var modalText = typeof pText !== 'undefined' ? pText : 'undefined';
-          var theImg = ul.find('li[data-bsp-li-index="'+index+'"] img');
-          var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
+          // var theImg = ul.find('li[data-bsp-li-index="'+index+'"] img');
+          // var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
            
-          $('#bsPhotoGalleryModal .modal-body img').attr('src', src);
+          $('#bsPhotoGalleryModal .modal-body img.bsp-modal-main-image').attr('src', src);
           var txt = '';
-          if(alt !== null){
-            txt += '<h6>'+alt+'</h6>'
-          }
+          // if(alt !== null){
+          //   txt += '<h6>'+alt+'</h6>'
+          // }
           if(typeof pText !== 'undefined'){
             txt += '<p class="pText">'+pText+'</p>'
           }        
@@ -132,7 +140,7 @@
               $(this).attr('href', clicked.nextImg);
               $('a.previous').attr('href', clicked.prevImg);
           }
-          // console.log(clicked);
+
         showHideControls();
         return false;
       }
@@ -140,6 +148,9 @@
         $('#bsPhotoGalleryModal .modal-body').html('');
         clicked = {};
       }
+
+
+      //START OF LOGIC//
 
       this.each(function(i){
         //ul
