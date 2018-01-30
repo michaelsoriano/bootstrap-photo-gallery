@@ -50,8 +50,14 @@
       }
       
       function getSrcfromStyle(istr){
-        return istr.replace(/url\(\"/g,'').replace(/\"\)/g,'');    
-      }
+        // return istr.replace(/url\(\"/g,'').replace(/\"\)/g,'');  //**DOESNT WORK IN SAFARI/MAC https://github.com/michaelsoriano/bootstrap-photo-gallery/issues/17
+        return istr.replace('"','')
+                .replace("'",'')
+                .replace('"','')
+                .replace("'",'')
+                .replace('url(','')
+                .replace(')','');
+      }     
 
       function showModal(){
 

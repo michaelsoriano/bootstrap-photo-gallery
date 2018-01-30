@@ -3,11 +3,9 @@
   "version": "2.0.0",
   "description": "A jQuery plugin that will automatically create a Photo Gallery based on an unordered list of images. Supports image captions, modal, with \"next\" and \"previous\" paging. Plugin requires Bootstrap and jQuery.",
   "main": "index.js",
-  "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-minify": "^2.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "gulp": "^3.9.1",
     "gulp-clean-css": "^3.9.2",
     "gulp-minify": "^2.1.0",
     "gulp-rename": "^1.2.2"
