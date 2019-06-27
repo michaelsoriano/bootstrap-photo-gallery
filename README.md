@@ -87,18 +87,9 @@ The following options are available:
 </tbody>
 </table>
 
-### Build
-
-Install gulp and dependencies:
-
-```
-npm i -D gulp gulp-sass gulp-sourcemaps gulp-clean-css
-```
-
-run gulp compress to minify js and css
-
-
 ### Change Log:
+
+<strong>Update 6/26/2019:</strong> Removed gulp and dependencies due to security alerts.
 
 <strong>Update 1/6/2018:</strong> Support for Bootstrap 4 has been added. BS4 has made several changes and removed plenty of old functionality - so the plugin had to be updated. 
 
